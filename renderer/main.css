@@ -1,0 +1,88 @@
+body {
+	background: black;
+	color: white;
+	margin: 0 !important;
+
+	font-family: 'Open Sans', sans-serif;
+	
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+}
+
+#recentfiles
+{
+	padding: 2em;
+}
+
+#recentfiles > .file
+{
+	padding: 0.75em;
+}
+#recentfiles > div:hover
+{
+	background: #2b2b2b;
+}
+
+.filename
+{
+	/* font-weight: bold; */
+	margin-bottom: 0.5em;
+}
+
+.path
+{
+	overflow-wrap: break-word;
+	opacity: 0.5;
+}
+
+/* open-sans-300 - latin */
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 300;
+	src: url('./fonts/OpenSans-Light.ttf');
+  }
+  /* open-sans-300italic - latin */
+  @font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 300;
+	src: url('./fonts/OpenSans-LightItalic.ttf');
+  }
+  /* open-sans-regular - latin */
+  @font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: url('./fonts/OpenSans-Regular.ttf');
+  }
+  /* open-sans-italic - latin */
+  @font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 400;
+	src: url('./fonts/OpenSans-Italic.ttf');
+  }
+  /* open-sans-700 - latin */
+  @font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 700;
+	src: url('./fonts/OpenSans-Bold.ttf');
+  }
+  /* open-sans-700italic - latin */
+  @font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 700;
+	src: url('./fonts/OpenSans-BoltItalic.ttf');
+  }
+  
