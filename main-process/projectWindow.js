@@ -57,7 +57,7 @@ function ProjectWindow(filePath)
     if (!filePath) 
 	{
 		this.browserWindow = new BrowserWindow(welcomeWindow);
-		this.browserWindow.loadURL("file://" + __dirname + "/../renderer/index.html");
+		this.browserWindow.loadURL("file://" + __dirname + "/../renderer/splash.html");
 
 		this.browserWindow.webContents.on('did-finish-load', () => {
 			this.browserWindow.webContents.send("recent-files", ProjectWindow.getRecentFiles());
@@ -66,12 +66,17 @@ function ProjectWindow(filePath)
 	else
 	{	
 		this.browserWindow = new BrowserWindow(viewerWindow);
-		this.browserWindow.loadURL("file://" + filePath);
+		this.browserWindow.loadURL("file://" + __dirname + "/../renderer/viewer.html");
 		this.relPath = path.basename(filePath);
 		this.projectDir = path.dirname(filePath);
 		this.startFileWatching(filePath);
 
-        this.browserWindow.webContents.on('dom-ready', () => {
+		this.browserWindow.webContents.on('did-finish-load', () => {
+			this.browserWindow.webContents.send("load-html", filePath);
+		});
+
+        this.browserWindow.webContents.on('dom-ready', () => 
+		{
             this.browserWindow.setRepresentedFilename(filePath);
         });
     }
@@ -184,8 +189,6 @@ ProjectWindow.prototype.startFileWatching = function(path) {
 function recompile(mainInkPath) 
 {
 	var options = ["-o", path.parse(mainInkPath).name + ".json", path.parse(mainInkPath).base];
-
-	console.log(path.dirname(mainInkPath));
 
     var playProcess = spawn(inklecatePath, options, {
         "cwd": path.dirname(mainInkPath),

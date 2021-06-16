@@ -29,3 +29,28 @@ ipc.on("recent-files", (event, files) =>
 		recentfiles.appendChild(div);
 	}
 });
+
+ipc.on("load-html", (event, path) => 
+{
+	let frame = document.getElementById("frame");
+	
+	frame.addEventListener("load", function(event)
+	{
+		console.warn(event);
+		frame.credit = function() {}
+	});
+
+	frame.contentWindow.addEventListener("onerror", function(event)
+	{
+		console.warn(event);
+	});
+
+	
+	path = ("file://" + path).replace(" ", "%20");
+
+	frame.src = path;
+	//  = function(error, url, line) {
+	// 	console.warn(error);
+	// 	throw new Error(error)
+	// };
+});
